@@ -4,11 +4,13 @@ An exploit for OpenTSDB <= 2.4.1 cmd injection (CVE-2023-36812/CVE-2023-25826) w
 This is an exploit for a command injection vulnerability in OpenTSDB verions 2.4.1 and prior (CVE-2023-36812/CVE-2023-25826). The exploit is written in modern Fortran and leverages the official Fortran [http-client library](https://github.com/fortran-lang/http-client) that was created earlier this year.
 
 # Vulnerability details
-OpenTSDB is an open-source time series database written in Java. In 2020, a command injection vulnerability was discovered in versions 2.4.0 and prior that could be exploited in order to gain remote code execution on the host with root privileges. Since OpenTSDB does not support authentication, this vulnerability, tracked as CVE-2020-35476, could be exploited by anyone with access to the OpenTSDB web interface. A patch was released as part of version 2.4.1
+OpenTSDB is an open-source time series database written in Java. In 2020, a command injection vulnerability was discovered in versions 2.4.0 and prior that could be exploited in order to gain remote code execution on the host with root privileges. Since OpenTSDB does not support authentication, this vulnerability, tracked as CVE-2020-35476, could be exploited by anyone with access to the OpenTSDB web interface. The issue was patched in version 2.4.1
 
-This year it was discovered that the patch for CVE-2020-35476 was incomplete, and command injection is still possible in OpenTSDB 2.4.1 via several vectors. Details:
-- [security advisory](https://github.com/OpenTSDB/opentsdb/security/advisories/GHSA-76f7-9v52-v2fw)
+This year it was discovered that the patch for CVE-2020-35476 was incomplete, and command injection is still possible in OpenTSDB 2.4.1 via several vectors.
+
+Details:
 - Tracked as: [CVE-2023-36812](https://nvd.nist.gov/vuln/detail/CVE-2023-36812). It is worth nothing that [CVE-2023-25826](https://nvd.nist.gov/vuln/detail/CVE-2023-25826) actually seems to describe the same vulnerability, and both CVEs link to the exact same patch.
+- Security advisory: https://github.com/OpenTSDB/opentsdb/security/advisories/GHSA-76f7-9v52-v2fw
 - Credit: Gal Goldstein and Daniel Abeles of Oxeye
 - Patch: The patch will be introduced in 2.4.2, which is not an official release yet. At the time of writing, the most recent OpenTSDB [release](https://github.com/OpenTSDB/opentsdb/releases) is 2.4.1, so it is likely that most OpenTSDB instances in production are vulnerable. That being said, the OpenTSDB [FAQ](http://opentsdb.net/faq.html) emphasizes that this project "was written for internal use only", and "hasn't been through any security review and does not included authentication."
 
