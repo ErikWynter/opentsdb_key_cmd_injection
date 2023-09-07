@@ -16,7 +16,7 @@ Details:
 
 # Why Fortran?
 The short version is that I saw this convo:
-![why](https://github.com/ErikWynter/opentsdb_key_cmd_injection/assets/55885619/66f2edab-596a-49e8-8953-34eee527f4e1)
+![why](https://github.com/ErikWynter/opentsdb_key_cmd_injection/blob/main/why.png?raw=true)
 
 The idea of writing an exploit in [the programming language used to put people on the moon](https://www.linux.com/news/how-they-built-it-software-apollo-11/) intruiged me so much that I had to explore it myself. This exploit is the result of that experiment. To the question whether it was successful, I can respond only with these wise, yet cursed words that bind all devs in blood: It works on my machine. ¯\\_(ツ)_/¯
 
@@ -64,7 +64,7 @@ chmod +x /<path>/to/fpm
 Make sure you have `git` installed on your system before installing `fpm`.
 
 # Poc || GTFO
-https://github.com/ErikWynter/opentsdb_key_cmd_injection/assets/55885619/81375ad1-796a-4e52-931e-b5b9c6148a33
+https://github.com/ErikWynter/opentsdb_key_cmd_injection/assets/55885619/223e813e-9710-4193-98a1-ded2246567bf
 
 # Setting up an OpenTSDB instance for testing
 ## Manual installation (not recommended)
