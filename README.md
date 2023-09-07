@@ -56,6 +56,9 @@ chmod +x /<path>/to/fpm
 ```
 Make sure you have `git` installed on your system before installing `fpm`.
 
+# Poc || GTFO
+https://github.com/ErikWynter/opentsdb_key_cmd_injection/assets/55885619/81375ad1-796a-4e52-931e-b5b9c6148a33
+
 # A brief history of Fortran
 Fortran is mostly known as an archaic language that played an important role in the history of modern computing, but can no longer be considered relevant today. It was first released in 1957, predating both the ARPANET and Unix by more than a decade. Based on [this time-series data video](https://www.youtube.com/watch?v=qQXXI5QFUfw) it was the dominant programming language throughout the 1960s and 1970s, and remained among the 10 most popular languages until the late 1990s. But by the time Windows 98 was released, it had clearly fallen out of fashion, in favor of more modern languagues like C, C++, Java and JavaScript, all of which are still widely used today.
 
