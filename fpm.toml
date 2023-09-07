@@ -1,0 +1,21 @@
+name = "opentsdb_key_cmd_injection"
+version = "0.1.0"
+license = "license"
+author = "ErikWynter"
+maintainer = "erik.wynter@gmail.com"
+copyright = "Copyright 2023, ErikWynter"
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+module-naming = false
+[install]
+library = false
+[fortran]
+implicit-typing = false
+implicit-external = false
+source-form = "free"
+
+[dependencies]
+http = { git = "https://github.com/fortran-lang/http-client.git" }
+stdlib = "*"
