@@ -65,6 +65,55 @@ Make sure you have `git` installed on your system before installing `fpm`.
 # Poc || GTFO
 https://github.com/ErikWynter/opentsdb_key_cmd_injection/assets/55885619/81375ad1-796a-4e52-931e-b5b9c6148a33
 
+# Setting up an OpenTSDB instance for testing
+## Manual installation (not recommended)
+For a manual installation, you can follow the official installation instructions [here](http://opentsdb.net/docs/build/html/installation.html). This can be annoying though, so I would recommend using docker instead.
+
+## Docker installation (recommended)
+For version 2.4.0, you can use the vulnhub docker image and follow the installation instructions [here](https://github.com/vulhub/vulhub/tree/master/opentsdb/CVE-2020-35476). That image was created for CVE-2020-35476, an older vulnerability in OpenTSDB through 2.4.0.
+
+For version 2.4.1 and probably any other version, you could leverage the vulhub image for OpenTSDB 2.4.0 and edit it to install the version you want. I followed this approach for 2.4.1 and it worked great.
+
+- First, grab the vulhub OpenTSDB 2.4.0 `Dockerfile` and `docker-entrypoint.sh` files from [here](https://github.com/vulhub/vulhub/tree/master/base/opentsdb/2.4.0) and store them in a dedicated directory.
+- In the `Dockerfile`, replace all instances for `2.4.0` with your desired version, eg `2.4.1`
+- No edits are necessary for `docker-entrypoint.sh`
+- Create a `docker-compose.yml` file with the following contents:
+```
+version: '2'
+services:
+ opentsdb:
+   build: ./path-to-your-dockerfile-directory
+   ports:
+    - "4242:4242"
+```
+I used this file structure:
+```
+wynter@wynter-pc:~/dev/opentsdb$ ls -lR
+.:
+total 8
+-rw-rw-r-- 1 wynter wynter   86 Sep  1 10:55 docker-compose.yml
+drwxrwxr-x 2 wynter wynter 4096 Sep  1 10:54 docker_file
+
+./docker_file:
+total 8
+-rw-rw-r-- 1 wynter wynter 927 Sep  1 10:54 Dockerfile
+-rw-rw-r-- 1 wynter wynter 359 Sep  1 10:35 docker-entrypoint.sh
+wynter@wynter-pc:~/dev/opentsdb$ cat docker-compose.yml 
+version: '2'
+services:
+ opentsdb:
+   build: ./docker_file
+   ports:
+    - "4242:4242"
+```
+
+- Finally, build and run the image via docker-compose by running the below command in the directory with you `docker-compose.yml`file:
+```
+docker-compose up -d
+```
+- After a few seconds, OpenTSDB will be available on port 4242. No additional configuration is required.
+
+
 # A brief history of Fortran (because why not)
 Fortran is mostly known as an archaic language that played an important role in the history of modern computing, but can no longer be considered relevant today. It was first released in 1957, predating both the ARPANET and Unix by more than a decade. Based on [this time-series data video](https://www.youtube.com/watch?v=qQXXI5QFUfw) it was the dominant programming language throughout the 1960s and 1970s, and remained among the 10 most popular languages until the late 1990s. But by the time Windows 98 was released, it had clearly fallen out of fashion, in favor of more modern languagues like C, C++, Java and JavaScript, all of which are still widely used today.
 
